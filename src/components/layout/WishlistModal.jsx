@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { WishlistContext } from '../../context/WishlistContext';
-import { apiRequest } from '../../services/api';
 import { toast } from 'react-toastify';
 import { X } from 'lucide-react';
 

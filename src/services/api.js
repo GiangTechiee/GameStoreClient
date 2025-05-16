@@ -1,6 +1,9 @@
 import { toast } from "react-toastify";
 
 export const apiRequest = async (endpoint, method = "GET", data = null) => {
+  const baseUrl = import.meta.env.VITE_API_URL || "https://gamestore-demo.onrender.com";
+  const url = `${baseUrl}${endpoint.startsWith("/") ? endpoint : "/" + endpoint}`;
+  
   const config = {
     method,
     headers: {
@@ -16,7 +19,7 @@ export const apiRequest = async (endpoint, method = "GET", data = null) => {
   }
 
   try {
-    const response = await fetch(`/api${endpoint}`, config);
+    const response = await fetch(url, config);
 
     if (!response.ok) {
       if (response.status === 401) {
