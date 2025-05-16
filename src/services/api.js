@@ -2,7 +2,10 @@ import { toast } from "react-toastify";
 
 export const apiRequest = async (endpoint, method = "GET", data = null) => {
   const baseUrl = import.meta.env.VITE_API_URL || "https://gamestore-demo.onrender.com";
-  const url = `${baseUrl}${endpoint.startsWith("/") ? endpoint : "/" + endpoint}`;
+  const normalizedEndpoint = endpoint.startsWith("/api")
+    ? endpoint
+    : `/api${endpoint.startsWith("/") ? endpoint : "/" + endpoint}`;
+  const url = `${baseUrl}${normalizedEndpoint}`;
   
   const config = {
     method,
