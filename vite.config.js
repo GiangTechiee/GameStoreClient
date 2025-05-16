@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://gamestore-demo.onrender.com",
+        target: process.env.VITE_API_URL || "https://gamestore-demo.onrender.com",
         changeOrigin: true,
         secure: false,
         //rewrite: (path) => path.replace(/^\/api/, 'api'),
